@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="monetag" content="ef4c5a6760bbf9190aa2440796c33e17">
+    <title>Modern 10-Page Application</title>
+    <script src="https://quge5.com/88/tag.min.js" data-zone="216279" async data-cfasync="false"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.5);
+            --secondary: #8b5cf6;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            width: 12.5%;
+            /* 1 of 8 */
+            transition: width 0.4s ease;
+            border-radius: 10px;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            padding: 3rem 1.5rem;
+            position: relative;
+            overflow-y: auto;
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.4s ease-out forwards;
+            height: 100%;
+        }
+
+        .page.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Page Content Styling */
+        .page-header {
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        .page-subtitle {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 3rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .glass-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .glass-card p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 1.1rem;
+            max-width: 650px;
+        }
+
+        /* Colors for each page title */
+        #page-1 .page-title {
+            color: #60a5fa;
+        }
+
+        #page-2 .page-title {
+            color: #c084fc;
+        }
+
+        #page-3 .page-title {
+            color: #34d399;
+        }
+
+        #page-4 .page-title {
+            color: #fbbf24;
+        }
+
+        #page-5 .page-title {
+            color: #f87171;
+        }
+
+        #page-6 .page-title {
+            color: #818cf8;
+        }
+
+        #page-7 .page-title {
+            color: #a78bfa;
+        }
+
+        #page-8 .page-title {
+            color: #f472b6;
+        }
+
+        #page-9 .page-title {
+            color: #38bdf8;
+        }
+
+        #page-10 .page-title {
+            color: #fb923c;
+        }
+
+        .quiz-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            max-width: 350px;
+            margin: 1.5rem auto 0;
+        }
+
+        .glass-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-main);
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .glass-input:focus {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .glass-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--primary-glow);
+        }
+
+        /* Radio Group Styling */
+        .radio-group {
+            display: flex;
+            gap: 1rem;
+            width: 100%;
+            max-width: 350px;
+            margin: 1.5rem auto;
+        }
+
+        .radio-btn {
+            flex: 1;
+            position: relative;
+        }
+
+        .radio-btn input[type="radio"] {
+            display: none;
+        }
+
+        .radio-btn label {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .radio-btn input[type="radio"]:checked+label {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+            border-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+            color: white;
+        }
+
+        .radio-btn label:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 1.5rem 1rem;
+            }
+
+            .glass-card {
+                padding: 1.5rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .page-subtitle {
+                font-size: 1rem;
+            }
+
+            .logo {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .glass-card h3 {
+                font-size: 1.5rem;
+            }
+
+            .progress-container {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="main-content">
+        <div class="logo">SurveyFusion 🍎</div>
+        <div class="progress-container">
+            <div class="progress-bar" id="surveyProgress"></div>
+        </div>
+        <!-- Page 1 (Name) -->
+        <section id="page-1" class="page active">
+            <div class="page-header">
+                <h1 class="page-title">Personal Info</h1>
+                <p class="page-subtitle">Step 1 of 8</p>
+            </div>
+            <div class="glass-card">
+                <div class="quiz-container">
+                    <h3>What is your name?</h3>
+                    <div class="input-group">
+                        <input type="text" class="glass-input" placeholder="Enter your full name" id="userName">
+                        <button class="btn-primary" onclick="switchPage('page-2')">Next <span
+                                style="margin-left:8px">→</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 2 (Age) -->
+        <section id="page-2" class="page">
+            <div class="page-header">
+                <h1 class="page-title">Personal Info</h1>
+                <p class="page-subtitle">Step 2 of 8</p>
+            </div>
+            <div class="glass-card">
+                <div class="quiz-container">
+                    <h3>What is your age?</h3>
+                    <div class="input-group">
+                        <input type="number" class="glass-input" placeholder="Enter your age (e.g., 25)" id="userAge">
+                        <button class="btn-primary" onclick="switchPage('page-3')">Next <span
+                                style="margin-left:8px">→</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 3 (Height) -->
+        <section id="page-3" class="page">
+            <div class="page-header">
+                <h1 class="page-title">Physical Built</h1>
+                <p class="page-subtitle">Step 3 of 8</p>
+            </div>
+            <div class="glass-card">
+                <div class="quiz-container">
+                    <h3>What is your height?</h3>
+                    <div class="input-group">
+                        <input type="text" class="glass-input"
+                            placeholder="Enter your height (e.g., 5'10&quot; or 178cm)" id="userHeight">
+                        <button class="btn-primary" onclick="switchPage('page-4')">Next <span
+                                style="margin-left:8px">→</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 4 (Gender) -->
+        <section id="page-4" class="page">
+            <div class="page-header">
+                <h1 class="page-title">Identity</h1>
+                <p class="page-subtitle">Step 4 of 8</p>
+            </div>
+            <div class="glass-card">
+                <div class="quiz-container">
+                    <h3>Are you a Boy or a Girl?</h3>
+                    <div class="radio-group">
+                        <div class="radio-btn">
+                            <input type="radio" id="genderBoy" name="gender" value="boy">
+                            <label for="genderBoy">Boy 👦</label>
+                        </div>
+                        <div class="radio-btn">
+                            <input type="radio" id="genderGirl" name="gender" value="girl">
+                            <label for="genderGirl">Girl 👧</label>
+                        </div>
+                    </div>
+                    <div class="input-group" style="margin-top: 0;">
+                        <button class="btn-primary" onclick="switchPage('page-5')">Next <span
+                                style="margin-left:8px">→</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 5 (Location) -->
+        <section id="page-5" class="page">
+            <div class="page-header">
+                <h1 class="page-title">Location</h1>
+                <p class="page-subtitle">Step 5 of 8</p>
+            </div>
+            <div class="glass-card">
+                <div class="quiz-container">
+                    <h3>Where do you live?</h3>
+                    <div class="input-group">
+                        <input type="text" class="glass-input" placeholder="Enter your City/Country" id="userLocation">
+                        <button class="btn-primary" onclick="switchPage('page-6')">Next <span
+                                style="margin-left:8px">→</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 6 (Hobbies) -->
+        <section id="page-6" class="page">
+            <div class="page-header">
+                <h1 class="page-title">Interests</h1>
+                <p class="page-subtitle">Step 6 of 8</p>
+            </div>
+            <div class="glass-card">
+                <div class="quiz-container">
+                    <h3>What is your favorite hobby?</h3>
+                    <div class="input-group">
+                        <input type="text" class="glass-input" placeholder="E.g., Reading, Gaming, Sports"
+                            id="userHobby">
+                        <button class="btn-primary" onclick="switchPage('page-7')">Next <span
+                                style="margin-left:8px">→</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 7 (Profession) -->
+        <section id="page-7" class="page">
+            <div class="page-header">
+                <h1 class="page-title">Profession</h1>
+                <p class="page-subtitle">Step 7 of 8</p>
+            </div>
+            <div class="glass-card">
+                <div class="quiz-container">
+                    <h3>What do you do for work/study?</h3>
+                    <div class="input-group">
+                        <input type="text" class="glass-input" placeholder="Enter your profession or field of study"
+                            id="userProfession">
+                        <button class="btn-primary" onclick="switchPage('page-8')">Next <span
+                                style="margin-left:8px">→</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 8 (Completion) -->
+        <section id="page-8" class="page">
+            <div class="page-header">
+                <h1 class="page-title">All Done!</h1>
+                <p class="page-subtitle">Step 8 of 8</p>
+            </div>
+            <div class="glass-card">
+                <div class="quiz-container">
+                    <h3>Thank you for answering!</h3>
+                    <p style="margin-bottom: 20px;">We have securely collected your information.</p>
+                    <div style="font-size: 2rem; font-weight: bold; margin-bottom: 1rem; color: var(--primary);">Code:
+                        55</div>
+                    <div class="input-group" style="margin-top: 0">
+                        <button class="btn-primary" onclick="finishSurvey()">Finish <span
+                                style="margin-left:8px">✓</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function switchPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Show the selected page
+            document.getElementById(pageId).classList.add('active');
+
+            // Update Progress Bar
+            const pageNum = parseInt(pageId.split('-')[1]);
+            const progress = (pageNum / 8) * 100;
+            document.getElementById('surveyProgress').style.width = progress + '%';
+        }
+
+        function finishSurvey() {
+            alert('Survey Completed! Form submitted successfully.');
+            // Restart survey
+            document.querySelectorAll('input').forEach(input => input.value = '');
+            document.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
+            switchPage('page-1');
+        }
+    </script>
+</body>
+
+</html>
