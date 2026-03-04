@@ -7,35 +7,34 @@
     <meta name="monetag" content="f15c9aa6cd721474b07b0a0f974d06b8">
     <title>Modern 10-Page Application</title>
     <script src="https://quge5.com/88/tag.min.js" data-zone="216279" async data-cfasync="false"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0f172a;
-            --bg-card: rgba(30, 41, 59, 0.7);
-            --primary: #3b82f6;
-            --primary-glow: rgba(59, 130, 246, 0.5);
-            --secondary: #8b5cf6;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: rgba(255, 255, 255, 0.1);
+            --bg-dark: #eeeeee;
+            --bg-card: #ffffff;
+            --primary: #2196f3;
+            --primary-glow: rgba(33, 150, 243, 0.3);
+            --secondary: #1976d2;
+            --text-main: #212121;
+            --text-muted: #757575;
+            --border-color: #cccccc;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Roboto', sans-serif;
         }
 
         body {
             background-color: var(--bg-dark);
-            background-image:
-                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
-            overflow: hidden;
+            flex-direction: column;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         .logo {
@@ -43,9 +42,7 @@
             font-weight: 800;
             text-align: center;
             margin-bottom: 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--text-main);
             letter-spacing: 1px;
         }
 
@@ -53,19 +50,19 @@
         .progress-container {
             width: 100%;
             height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            background: #e0e0e0;
+            border-radius: 4px;
             margin-bottom: 3rem;
             overflow: hidden;
         }
 
         .progress-bar {
             height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background-color: var(--primary);
             width: 12.5%;
             /* 1 of 8 */
             transition: width 0.4s ease;
-            border-radius: 10px;
+            border-radius: 4px;
         }
 
         /* Main Content Area */
@@ -73,8 +70,9 @@
             flex: 1;
             padding: 3rem 1.5rem;
             position: relative;
-            overflow-y: auto;
+            overflow: visible;
             max-width: 800px;
+            width: 100%;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
@@ -84,7 +82,8 @@
         .page {
             display: none;
             animation: fadeIn 0.4s ease-out forwards;
-            height: 100%;
+            min-height: 100%;
+            height: auto;
         }
 
         .page.active {
@@ -125,9 +124,7 @@
 
         .glass-card {
             background: var(--bg-card);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
+            border-radius: 8px;
             padding: 3rem;
             flex: 1;
             display: flex;
@@ -135,12 +132,12 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+            transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .glass-card:hover {
-            transform: translateY(-8px);
+            box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
         }
 
         .glass-card h3 {
@@ -156,46 +153,7 @@
             max-width: 650px;
         }
 
-        /* Colors for each page title */
-        #page-1 .page-title {
-            color: #60a5fa;
-        }
-
-        #page-2 .page-title {
-            color: #c084fc;
-        }
-
-        #page-3 .page-title {
-            color: #34d399;
-        }
-
-        #page-4 .page-title {
-            color: #fbbf24;
-        }
-
-        #page-5 .page-title {
-            color: #f87171;
-        }
-
-        #page-6 .page-title {
-            color: #818cf8;
-        }
-
-        #page-7 .page-title {
-            color: #a78bfa;
-        }
-
-        #page-8 .page-title {
-            color: #f472b6;
-        }
-
-        #page-9 .page-title {
-            color: #38bdf8;
-        }
-
-        #page-10 .page-title {
-            color: #fb923c;
-        }
+        /* Colors for each page title removed for Material Design consistency */
 
         .quiz-container {
             display: flex;
@@ -215,10 +173,11 @@
 
         .glass-input {
             width: 100%;
-            padding: 1rem 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
+            padding: 0.5rem 0.5rem 0.5rem 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--border-color);
+            border-radius: 0;
             color: var(--text-main);
             font-size: 1.1rem;
             outline: none;
@@ -226,9 +185,8 @@
         }
 
         .glass-input:focus {
-            background: rgba(255, 255, 255, 0.1);
             border-color: var(--primary);
-            box-shadow: 0 0 15px var(--primary-glow);
+            box-shadow: 0 1px 0 0 var(--primary);
         }
 
         .glass-input::placeholder {
@@ -238,20 +196,21 @@
         .btn-primary {
             width: 100%;
             padding: 1rem 1.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--primary);
             color: white;
             border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            border-radius: 2px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px var(--primary-glow);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px var(--primary-glow);
+            background-color: var(--secondary);
+            box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
         }
 
         /* Radio Group Styling */
@@ -276,24 +235,24 @@
             display: block;
             width: 100%;
             padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: transparent;
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 4px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 600;
+            color: var(--text-main);
         }
 
         .radio-btn input[type="radio"]:checked+label {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+            background: rgba(33, 150, 243, 0.1);
             border-color: var(--primary);
-            box-shadow: 0 0 15px var(--primary-glow);
-            color: white;
+            color: var(--primary);
         }
 
         .radio-btn label:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.05);
         }
 
         @media (max-width: 768px) {
@@ -325,6 +284,21 @@
             .progress-container {
                 margin-bottom: 2rem;
             }
+        }
+
+        .mt-0 {
+            margin-top: 0 !important;
+        }
+
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+
+        .completion-code {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--primary);
         }
     </style>
 </head>
@@ -410,9 +384,9 @@
                             <label for="genderGirl">Girl 👧</label>
                         </div>
                     </div>
-                    <div class="input-group" style="margin-top: 0;">
+                    <div class="input-group mt-0">
                         <button class="btn-primary" onclick="switchPage('page-5')">Next <span
-                                style="margin-left:8px">→</span></button>
+                                class="ml-8">→</span></button>
                     </div>
                 </div>
             </div>
@@ -483,12 +457,11 @@
             <div class="glass-card">
                 <div class="quiz-container">
                     <h3>Thank you for answering!</h3>
-                    <p style="margin-bottom: 20px;">We have securely collected your information.</p>
-                    <div style="font-size: 2rem; font-weight: bold; margin-bottom: 1rem; color: var(--primary);">Code:
+                    <p class="mb-20">We have securely collected your information.</p>
+                    <div class="completion-code">Code:
                         55</div>
-                    <div class="input-group" style="margin-top: 0">
-                        <button class="btn-primary" onclick="finishSurvey()">Finish <span
-                                style="margin-left:8px">✓</span></button>
+                    <div class="input-group mt-0">
+                        <button class="btn-primary" onclick="finishSurvey()">Finish <span class="ml-8">✓</span></button>
                     </div>
                 </div>
             </div>
